@@ -50,7 +50,7 @@ We have sent you the OTP pin at{'\n'}
 </View>
 
 <View>
-  <TouchableOpacity  onPress={()=>navigation.navigate('Getquote')} style={{height:38,width:295,backgroundColor:'#263A96',borderRadius:18,justifyContent:'center',marginBottom:50}}>
+  <TouchableOpacity  onPress={()=>navigation.navigate('Threedpage')} style={{height:38,width:295,backgroundColor:'#263A96',borderRadius:18,justifyContent:'center',marginBottom:50}}>
     <Text  style={{color:'#fff',textAlign:'center'}}>Verify Now</Text>
   </TouchableOpacity>
   
