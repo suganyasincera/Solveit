@@ -13,14 +13,14 @@ export default function Secondpage({navigation}) {
   return (
     <View style={styles.container}>
 
-      <Image source={require('../assets/3img.png')} /> 
+      <Image style={{resizeMode:'contain',width:'100%',}} source={require('../assets/3img.png')} /> 
 
       <Ionicons style={{margin: 5,
     position: "absolute",
     top: '5%',
     left: 0,
     width: 25,
-    height: 25,}} name='chevron-back-outline' size={30} color={'#263A96'} />
+    height: 25,}} name='chevron-back-outline' size={30} color={'#263A96'}  onPress={() => navigation.navigate('Firstpage')} />
 
       <ScrollView>
 
@@ -65,6 +65,8 @@ export default function Secondpage({navigation}) {
         <View style={styles.wrapperInput}>
           <TextInput
             style={styles.input}
+            secureTextEntry={ true }
+            
             placeholder="Password" />
           {/* <Ionicons name="eye-outline" size={25} color={'#263A96'} style={{marginRight:10}} /> */}
           <Ionicons name="eye-off-outline" size={25} color={'#919191'} style={{ marginRight: 10 }} />

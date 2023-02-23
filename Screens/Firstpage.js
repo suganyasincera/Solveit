@@ -51,7 +51,7 @@ const data = [
         <View style={styles.container}>
               <StatusBar style="dark" />
               <View style={styles.fimg}>
-            <Image source={require('../assets/1img.png')} />
+            <Image style={{resizeMode:'contain',width:'100%'}} source={require('../assets/1img.png')} />
             </View>
 
             <FlatList 

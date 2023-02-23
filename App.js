@@ -7,6 +7,7 @@ import Secondpage from './Screens/Secondpage';
 
 import Thirdpage from './Screens/Thirdpage';
 import OtpScreen from './Screens/OtpScreen';
+import Forthpage from './Screens/Forthpage';
 
 
 const Stack = createNativeStackNavigator();
@@ -23,6 +24,7 @@ export default function App() {
     <Stack.Screen name='Secondpage' component={Secondpage} />
     <Stack.Screen name='Thirdpage' component={Thirdpage} />
     <Stack.Screen name='OtpScreen' component={OtpScreen} />
+    <Stack.Screen name='Forthpage' component={Forthpage} />
 
   </Stack.Navigator>
 </NavigationContainer>

@@ -8,7 +8,7 @@ export default function Thirdpage({navigation}) {
   return (
     <View style={{flex:1,backgroundColor:'#FAFAFA',}}>
       
-     <Ionicons style={{marginTop:40,marginLeft:15}} name='chevron-back-outline' size={30} color={'#263A96'} />
+     <Ionicons style={{marginTop:40,marginLeft:15}} name='chevron-back-outline' size={30} color={'#263A96'}  onPress={() => navigation.navigate('Secondpage')} />
      <View style={{margin:'10%',}}>
      <View style={{margin:0,top:'0%'}}>
       <Text style={{fontSize:20,fontWeight:'700',color:'#292D3D',marginBottom:10}}>Tell us about you</Text>
