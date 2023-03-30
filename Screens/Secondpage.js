@@ -34,7 +34,7 @@ export default function Secondpage({ navigation }) {
         onPress={() => navigation.navigate("Firstpage")}
       />
 
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ margin: 15 }}>
           <Text style={{ color: "#292D3D", fontWeight: "700", fontSize: 20 }}>
             Welcome Back!
@@ -63,8 +63,8 @@ export default function Secondpage({ navigation }) {
                 marginTop: 16,
                 padding: 0,
                 borderRadius: 18,
-                elevation: 5,
-                shadowColor: "#2d2d2d",
+                elevation: 3,
+                shadowColor: "#c1c1c1",
                 flexDirection: "row",
               }}
             >
@@ -94,8 +94,8 @@ export default function Secondpage({ navigation }) {
                 alignItems: "center",
                 marginTop: 16,
                 borderRadius: 18,
-                elevation: 5,
-                shadowColor: "#2d2d2d",
+                elevation: 3,
+                shadowColor: "#c1c1c1",
                 flexDirection: "row",
               }}
             >

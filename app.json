@@ -1,18 +1,15 @@
 {
   "expo": {
-    "name": "Solve-IT",
-    "slug": "Solve-IT",
+    "name": "solve_ITS",
+    "slug": "solve_ITS",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ic_launcher.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/Splashscreen.png",
+      "image": "./assets/SplashScreen1.png",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
@@ -22,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "foregroundImage": "./assets/ic_launcher.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.jeyaprakash007.solve_ITS"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b29ec3a8-fb28-498c-9bde-3cbf043a2fdb"
+      }
     }
   }
 }

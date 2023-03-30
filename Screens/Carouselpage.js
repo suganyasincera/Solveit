@@ -5,28 +5,28 @@ import {Ionicons} from '@expo/vector-icons'
 
 
 export const SLIDER_WIDTH = Dimensions.get('window').width + 5;
-export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.6);
+export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.5);
 
 const data = [
   {
     id: 1,
-    name: 'React JS',
-    url: 'https://icon-library.com/images/react-icon/react-icon-29.jpg',
+    name: 'Network',
+    // url: 'https://icon-library.com/images/react-icon/react-icon-29.jpg',
   },
   {
     id: 2,
-    name: 'JavaScript',
-    url: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/Javascript_Logo.png',
+    name: 'OS Issue',
+    // url: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/Javascript_Logo.png',
   },
   {
     id: 3,
-    name: 'Node JS',
-    url: 'https://upload.wikimedia.org/wikipedia/commons/6/67/NodeJS.png',
+    name: 'Hardware Issue',
+    // url: 'https://upload.wikimedia.org/wikipedia/commons/6/67/NodeJS.png',
   },
   {
     id: 4,
-    name: 'Node JS',
-    url: 'https://upload.wikimedia.org/wikipedia/commons/6/67/NodeJS.png',
+    name: 'Software Issue',
+    // url: 'https://upload.wikimedia.org/wikipedia/commons/6/67/NodeJS.png',
   },
 
 ];
@@ -44,7 +44,7 @@ const renderItem = ({item}) => {
         backgroundColor: '#263a96', 
       }}>
         <View style={{flexDirection:'row',justifyContent:'space-between',}} >
-        <Text style={{fontSize:12,fontWeight:'500',color:'#fff'}}>Network</Text>
+        <Text style={{fontSize:12,fontWeight:'500',color:'#fff'}}>{item.name}</Text>
         <Ionicons  name='ellipsis-horizontal-outline' size={20} color={'#fff'} />
         </View>
       {/* <Image source={{uri: item.url}} style={{width: 20, height: 20}} /> */}
@@ -70,18 +70,18 @@ const renderItem = ({item}) => {
   );
 };
 
-const Page8 = () => {
+const Carouselpage = () => {
   const [index, setIndex] = useState(0);
   const isCarousel = useRef(null);
   return (
-    <View style={{paddingTop: 200,paddingLeft:10,
+    <View style={{paddingTop: 10,
       alignItems: 'center'}}>
       <Carousel style={{}}
         ref={isCarousel}
         data={data}
         renderItem={renderItem}
-        sliderWidth={SLIDER_WIDTH  }
-        itemWidth={ITEM_WIDTH -30}
+        sliderWidth={SLIDER_WIDTH -500 }
+        itemWidth={ITEM_WIDTH +15}
         onSnapToItem={index => setIndex(index)}
       />
       <Pagination
@@ -111,4 +111,4 @@ const Page8 = () => {
   );
 };
 
-export default Page8;
+export default Carouselpage;

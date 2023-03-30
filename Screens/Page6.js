@@ -62,7 +62,7 @@ export default function Page6({ navigation }) {
                 marginLeft: 10,
               }}
             >
-              50% Complete{" "}
+              50% Complete
             </Text>
             <Text
               style={{
@@ -115,7 +115,7 @@ export default function Page6({ navigation }) {
           </View>
         </Card>
 
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{ margin: 20 }}>
             <Text style={{ color: "#292D3D", fontWeight: "700", fontSize: 20 }}>
               Sign Up
@@ -269,7 +269,7 @@ export default function Page6({ navigation }) {
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <TouchableOpacity
-                onPress={() => navigation.navigate("Page7")}
+                onPress={() => navigation.navigate("Forthpage")}
                 style={{
                   height: 51,
                   width: 71,

@@ -4,14 +4,56 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   ScrollView,
   TextInput,
+  Animated,
 } from "react-native";
-import React from "react";
+import React ,{ useState } from "react";
 import { Card } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 
+const Separator = () => <View style={Styles.separator} />;
+
 export default function Page7({ navigation }) {
+
+
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  
+
+
+
+  const starRatingOptions = [1, 2, 3, 4, 5, ];
+
+  const [starRating, setStarRating] = useState(null);
+
+  const animatedButtonScale = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(animatedButtonScale, {
+      toValue: 1,
+      useNativeDriver: true,
+      // speed: 0,
+      // bounciness: 4,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(animatedButtonScale, {
+      toValue: 1,
+      useNativeDriver: true,
+      // speed: 0,
+      // bounciness: 4,
+    }).start();
+  };
+
+  const animatedScaleStyle = {
+    transform: [{ scale: animatedButtonScale }],
+  };
+
+
+
   return (
     <View style={Styles.container}>
       <Card
@@ -34,6 +76,7 @@ export default function Page7({ navigation }) {
           name="chevron-back-outline"
           size={30}
           color={"#fff"}
+          onPress={() => navigation.navigate("Page6")}
         />
         <View style={{ margin: 38, marginLeft: 47 }}>
           <View
@@ -44,7 +87,9 @@ export default function Page7({ navigation }) {
             }}
           >
             <Image source={require("../assets/logocard.png")} />
-            <Text style={{ color: "#fff", fontSize: 14, fontWeight: "500" }}>
+            <Text style={{ color: "#fff", fontSize: 14, fontWeight: "500" }}
+             onPress={() => navigation.navigate("Secondpage")}
+            >
               Login
             </Text>
           </View>
@@ -53,10 +98,11 @@ export default function Page7({ navigation }) {
               fontSize: 20,
               fontWeight: "700",
               color: "#fff",
-              marginTop: 25,
+              marginTop: 20,
+              marginLeft: 10,
             }}
           >
-            100% Complete{" "}
+            100% Complete
           </Text>
           <Text
             style={{
@@ -64,6 +110,7 @@ export default function Page7({ navigation }) {
               fontWeight: "500",
               color: "#fff",
               marginTop: 20,
+              marginLeft: 10
             }}
           >
             SkillSet Info
@@ -72,8 +119,9 @@ export default function Page7({ navigation }) {
           <View
             style={{
               flexDirection: "row",
-              justifyContent: "space-between",
+              justifyContent: 'center',
               alignItems: "center",
+              marginTop: 20
             }}
           >
             <View
@@ -82,7 +130,7 @@ export default function Page7({ navigation }) {
                 width: 80,
                 backgroundColor: "#FF9800",
                 borderRadius: 6,
-                marginTop: 20,
+                margin: 5,
               }}
             ></View>
             <View
@@ -91,7 +139,7 @@ export default function Page7({ navigation }) {
                 width: 80,
                 backgroundColor: "#FF9800",
                 borderRadius: 6,
-                marginTop: 20,
+                margin: 5,
               }}
             ></View>
             <View
@@ -100,15 +148,16 @@ export default function Page7({ navigation }) {
                 width: 80,
                 backgroundColor: "#FF9800",
                 borderRadius: 6,
-                marginTop: 20,
+                margin: 5,
+
               }}
             ></View>
           </View>
         </View>
       </Card>
 
-      <ScrollView>
-        <View style={{ margin: "10%" }}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{ margin: 20 }}>
           <View>
             <Text style={{ color: "#292D3D", fontWeight: "700", fontSize: 20 }}>
               Sign Up
@@ -116,12 +165,12 @@ export default function Page7({ navigation }) {
             <Text style={{ fontWeight: "500", color: "#919191", fontSize: 16 }}>
               Create an account
             </Text>
-          </View>
+          
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginTop: "5%",
+              marginTop: 20,
             }}
           >
             <Text
@@ -163,25 +212,29 @@ export default function Page7({ navigation }) {
             <Card
               style={{
                 height: 170,
-                width: 306,
+                width: "100%",
                 backgroundColor: "#F3F3F3",
                 borderRadius: 10,
                 alignItems: "center",
-                marginTop: "5%",
+                marginTop: 20,
+                shadowColor:'#fff',
                 
               }}
             >
+              <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop: 10,
+                  margin: 5,}}>
               <Text
                 style={{
                   fontSize: 12,
                   fontWeight: "400",
                   color: "#353948",
-                  marginTop: 20,
-                  margin: 5,
+                  
                 }}
               >
                 Skill
               </Text>
+              <Ionicons name="close-circle-outline" size={20}/>
+              </View>
 
               <View style={Styles.wrapperInput}>
                 <TextInput style={Styles.input} placeholder="xxxxxxx" />
@@ -190,7 +243,7 @@ export default function Page7({ navigation }) {
                   name="chevron-down-outline"
                   size={20}
                   color={"#919191"}
-                  style={{ marginRight: 10 }}
+                  style={{ marginRight: 10 }} 
                 />
               </View>
               <View
@@ -211,7 +264,7 @@ export default function Page7({ navigation }) {
                     fontSize: 12,
                     fontWeight: "400",
                     color: "#353948",
-                    marginRight: 75,
+                    marginRight: 60,
                   }}
                 >
                   Level
@@ -220,7 +273,7 @@ export default function Page7({ navigation }) {
               <View
                 style={{
                   flexDirection: "row",
-                  justifyContent: "space-between",
+                  justifyContent: 'space-between',
                   alignItems: "center",
                 }}
               >
@@ -243,84 +296,42 @@ export default function Page7({ navigation }) {
                       alignItems: "flex-start",
                       fontSize: 14,
                       fontWeight: "400",
-                      color: "#919191",
-                    }}
+                      color: selectedTab == 0 ? '#263A96':'#919191',
+                    }}  onPress={() => {setSelectedTab(0);}}
                   >
                     Years
                   </Text>
+
+                  <Separator />
                   <Text
                     style={{
                       alignItems: "flex-end",
                       fontSize: 14,
                       fontWeight: "400",
-                      color: "#919191",
-                    }}
+                      color:  selectedTab == 1 ? '#263A96':'#919191',
+                    }}  onPress={() => {setSelectedTab(1);}}
                   >
                     Months
                   </Text>
                 </TouchableOpacity>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-evenly",
-                    alignItems: "center",
-                  }}
-                >
-                  <TouchableOpacity
-                    style={{
-                      padding: 0,
-                      backgroundColor: "#263A96",
-                      height: 20,
-                      width: 20,
-                      borderRadius: 20,
-                      margin: 2,
-                    }}
-                  ></TouchableOpacity>
-                  <TouchableOpacity
-                    style={{
-                      padding: 0,
-                      height: 20,
-                      width: 20,
-                      borderRadius: 20,
-                      margin: 2,
-                      borderWidth: 1,
-                      borderColor: "#DADADA",
-                    }}
-                  ></TouchableOpacity>
-                  <TouchableOpacity
-                    style={{
-                      padding: 0,
-                      height: 20,
-                      width: 20,
-                      borderRadius: 20,
-                      margin: 2,
-                      borderWidth: 1,
-                      borderColor: "#DADADA",
-                    }}
-                  ></TouchableOpacity>
-                  <TouchableOpacity
-                    style={{
-                      padding: 0,
-                      height: 20,
-                      width: 20,
-                      borderRadius: 20,
-                      margin: 2,
-                      borderWidth: 1,
-                      borderColor: "#DADADA",
-                    }}
-                  ></TouchableOpacity>
-                  <TouchableOpacity
-                    style={{
-                      padding: 0,
-                      height: 20,
-                      width: 20,
-                      borderRadius: 20,
-                      margin: 2,
-                      borderWidth: 1,
-                      borderColor: "#DADADA",
-                    }}
-                  ></TouchableOpacity>
-                </View>
+                <View style={Styles.stars}>
+          {starRatingOptions.map((option) => (
+            <TouchableWithoutFeedback
+              onPressIn={() => handlePressIn(option)}
+              onPressOut={() => handlePressOut(option)}
+              onPress={() => setStarRating(option)}
+              key={option}
+            >
+              <Animated.View style={animatedScaleStyle}>
+                <Ionicons
+                  name={starRating >= option ? 'ellipse' : 'ellipse-outline'}
+                  size={20}
+                  style={starRating >= option ? Styles.starSelected : Styles.starUnselected}
+                />
+              </Animated.View>
+            </TouchableWithoutFeedback>
+          ))}
+        </View>
               </View>
             </Card>
           </View>
@@ -329,7 +340,7 @@ export default function Page7({ navigation }) {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginTop: "5%",
+              marginTop: 20,
             }}
           >
             <Text
@@ -371,49 +382,57 @@ export default function Page7({ navigation }) {
             style={{
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "5%",
+              marginTop: 20,
             }}
           >
             <Card
               style={{
                 height: 170,
-                width: 306,
+                width: "100%",
                 backgroundColor: "#F3F3F3",
                 borderRadius: 10,
-                alignItems: "center",
+                // alignItems: "center",
+                // justifyContent:'center',
+
+                shadowColor:'#fff'
               }}
             >
+               
               <Text
                 style={{
                   fontSize: 12,
                   fontWeight: "400",
                   color: "#353948",
                   marginTop: 20,
-                  margin: 5,
+                  marginLeft: 20,
                 }}
               >
                 Achievements
               </Text>
+              <View style={{justifyContent:'center',alignItems:"center",marginTop:10}}>
               <TextInput
                 style={{
                   height: 84,
-                  width: 281,
+                  width: '90%',
                   borderWidth: 1,
                   borderRadius: 18,
                   borderColor: "#DADADA",
                   alignItems: "center",
                   justifyContent: "center",
-                  padding: 10,
+                  backgroundColor:'#fff',
+                  paddingLeft:20
                 }}
                 placeholder={"xxxxxxxxx"}
               ></TextInput>
+              </View>
+              
             </Card>
           </View>
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginTop: "5%",
+              marginTop: 20,
             }}
           >
             <Text
@@ -461,13 +480,15 @@ export default function Page7({ navigation }) {
             <Card
               style={{
                 height: 136,
-                width: 306,
+                width: '100%',
                 backgroundColor: "#F3F3F3",
                 borderRadius: 10,
                 alignItems: "center",
                 justifyContent: "center",
                 borderStyle: "dashed",
                 borderWidth: 1,
+                shadowColor:'#fff',
+                borderColor:'#DADADA'
               }}
             >
               {/* <Text style={{ margin: 5 }}>Achievements</Text> */}
@@ -481,7 +502,7 @@ export default function Page7({ navigation }) {
                 ></Ionicons>
               </View>
               <Text
-                style={{ fontSize: 12, fontWeight: "400", color: "#919191" }}
+                style={{ fontSize: 12, fontWeight: "400", color: "#919191",textAlign:'center' }}
               >
                 Upload Certificates in {"\n"} PDF / JPG Format.
               </Text>
@@ -515,7 +536,7 @@ export default function Page7({ navigation }) {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Page8")}
+                onPress={() => navigation.navigate("Page8")}
               style={{
                 height: 51,
                 width: 71,
@@ -529,6 +550,7 @@ export default function Page7({ navigation }) {
               <Ionicons name="checkmark-outline" size={30} color={"#ffffff"} />
             </TouchableOpacity>
           </View>
+        </View>
         </View>
       </ScrollView>
     </View>
@@ -557,9 +579,40 @@ const Styles = StyleSheet.create({
     margin: 0,
   },
 
-  input: {
-    padding: 5,
-
-    width: "80%",
+  separator: {
+   
+    borderColor: "#d5d5d5",
+    // borderBottomWidth: 2,
+    backgroundColor:'#d5d5d5',
+    borderWidth:0.5,
+   
+    height: 35,
+    
+    // transform:[{ rotate: '90deg'}]
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // marginBottom: 15
   },
+
+
+  input: {
+    marginLeft: 20,
+    height: 38,
+    width: "80%",
+    justifyContent:'center'
+  },
+
+
+  stars: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  starUnselected: {
+    color: '#DADADA',
+  },
+  starSelected: {
+    color: '#263A96',
+  },
+
+
 });

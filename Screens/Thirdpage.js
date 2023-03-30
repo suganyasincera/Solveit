@@ -19,7 +19,7 @@ export default function Thirdpage({ navigation }) {
         onPress={() => navigation.navigate("Secondpage")}
       />
 
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ margin: 30 }}>
           <Text
             style={{
@@ -66,6 +66,7 @@ export default function Thirdpage({ navigation }) {
           }}
         >
           <TouchableOpacity
+          //  onPress={() => navigation.navigate("DashboardSpecial")}
             style={{
               borderColor: selectedTab == 0 ? "#263a96":"#AACBFF",
               borderWidth: 2,
@@ -74,15 +75,19 @@ export default function Thirdpage({ navigation }) {
               width: 122,
               alignItems: "center",
               justifyContent: "flex-end",
-            }} onPress={() => {setSelectedTab(0); navigation.navigate("OtpScreen");}}
-            // onPress={() => navigation.navigate("OtpScreen")}
+            
+            }} onPress={() => {setSelectedTab(0);  }} 
+          
           >
-            <Image
+            <Image 
+             
               style={{ marginBottom: 20 }}
               source={require("../assets/logimg.png")}
             />
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback  
+            onPress={() => navigation.navigate("DashboardSpecial")}
+            >
               <View
                 style={{
                   alignItems: "center",
@@ -99,7 +104,7 @@ export default function Thirdpage({ navigation }) {
                     color: "#fff",
                     fontSize: 14,
                     fontWeight: "500",
-                  }}
+                  }} onPress={() => {setSelectedTab(0);}}
                 >
                   Specialist User
                 </Text>
@@ -123,7 +128,9 @@ export default function Thirdpage({ navigation }) {
               source={require("../assets/logimg.png")}
             />
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback 
+             onPress={() => navigation.navigate("DashboardCustomer")}
+            >
               <View
                 style={{
                   alignItems: "center",
@@ -140,7 +147,7 @@ export default function Thirdpage({ navigation }) {
                     color: "#fff",
                     fontSize: 14,
                     fontWeight: "500",
-                  }}
+                  }} onPress={() => {setSelectedTab(1);}}
                 >
                   Customer / User
                 </Text>

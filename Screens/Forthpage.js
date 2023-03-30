@@ -13,12 +13,39 @@ import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { TouchableWithoutFeedback } from "react-native";
 import { TouchableOpacity } from "react-native";
 
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+
 export default function Forthpage({ navigation }) {
 
 
     const [selectedTab, setSelectedTab] = useState(0);
 
     const [selectedClose, setSelectedClose] = useState(0);
+
+
+
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+    const [selectedDate, setSelectedDate] = useState('Select Date');
+  
+    const showDatePicker = () => {
+      setDatePickerVisibility(true);
+    };
+  
+    const hideDatePicker = () => {
+      setDatePickerVisibility(false);
+    };
+  
+    const handleConfirm = (date) => {
+      // console.warn("A date has been picked: ", date);
+      const dt = new Date(date);
+      const x = dt.toISOString().split('T');
+      const xl = x[0].split('-');
+      // console.log(xl[2] + '/' + xl[1] + '/' + xl[0]);
+      setSelectedDate(xl[2] + '/' + xl[1] + '/' + xl[0]);
+      hideDatePicker();
+    };
+
 
   return (
     <View style={{ flex: 1, backgroundColor: "#FAFAFA" }}>
@@ -122,7 +149,7 @@ export default function Forthpage({ navigation }) {
         </View>
       </Card>
 
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ margin: 20 }}>
           <Text style={{ color: "#292D3D", fontWeight: "700", fontSize: 20 }}>
             Sign Up
@@ -171,7 +198,7 @@ export default function Forthpage({ navigation }) {
               <Text
                 style={{ color: selectedTab == 0 ? '#263A96':'#919191' , fontSize: 14, fontWeight: "400" }}
               >
-                {" "}
+                
                 Customer / User
               </Text>
             </TouchableOpacity>
@@ -216,18 +243,26 @@ export default function Forthpage({ navigation }) {
           <View style={{ marginTop: 20, margin: 0 }}>
             <Text style={styles.emailText}>DOB</Text>
             <View style={styles.wrapperInput}>
-              <TextInput
-                style={styles.input}
+              <TouchableOpacity style={styles.input}
                 keyboardType={"numeric"}
-                placeholder="xxxxx"
-              />
+                placeholder="xxxxx">
+                
+                <Text style={{color:"#373B4A",}}> {selectedDate} </Text>
+              </TouchableOpacity>
 
               <Ionicons
                 name="calendar-outline"
                 size={17}
                 color={"#919191"}
                 style={{ marginRight: 0 }}
+                onPress = {()=>{showDatePicker();}}
               />
+               <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+      />
             </View>
           </View>
 
@@ -239,8 +274,8 @@ export default function Forthpage({ navigation }) {
               color: "#353948",
             }}
           >
-            {" "}
-            Gender{" "}
+            
+            Gender
           </Text>
           <View
             style={{
@@ -265,7 +300,7 @@ export default function Forthpage({ navigation }) {
               <Text
                 style={{ color: selectedClose == 0 ? '#263A96':'#919191', fontSize: 14, fontWeight: "400" }}
               >
-                {" "}
+                
                 Male
               </Text>
             </TouchableOpacity>
@@ -286,8 +321,8 @@ export default function Forthpage({ navigation }) {
               <Text
                 style={{ color: selectedClose == 1 ? '#263A96':'#919191', fontSize: 14, fontWeight: "400" }}
               >
-                {" "}
-                Female{" "}
+                
+                Female
               </Text>
             </TouchableOpacity>
           </View>
@@ -330,6 +365,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     height: 38,
     width: "80%",
+    justifyContent:'center'
   },
   emailText: {
     color: "#353948",
